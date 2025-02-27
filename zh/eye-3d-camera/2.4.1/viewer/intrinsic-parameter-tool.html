@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>内参工具</title>
+    <link rel="canonical" href="https://docs.mech-mind.net/zh/eye-3d-camera/2.4.1/viewer/intrinsic-parameter-tool.html">
+    <link rel="prev" href="tools.html">
+    <link rel="next" href="exposure-assistant.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../../../_/css/site.css?v=1">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
+    <meta class="swiftype" name="title" data-type="string" content="内参工具">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-THGV3F2');</script>
+    <!-- End Google Tag Manager -->
+    <script>var uiRootPath = '../../../_'</script>
+    <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THGV3F2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+<header class="header">
+  <nav class="navbar container">
+    <div class="navbar-brand">
+      <a href="">
+         <img class="navbar-logo" src="../../../_/img/logo.svg" alt="" /> 
+      </a>
+      <a class="navbar-item navbar-title" href="../../../index.html">返回首页</a>
+
+
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field has-filter">
+          <i class="icon-search"></i>
+          <input id="search-input" type="text" placeholder="输入关键词搜索">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">学习向导</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://docs.mech-mind.net/zh/home/latest/vision-system.html">3D视觉引导学习向导</a>
+            <a class="navbar-item" href="https://docs.mech-mind.net/zh/home/latest/measurement-system.html">3D测量与检测学习向导</a>
+            <a class="navbar-item" href="https://docs.mech-mind.net/zh/home/latest/ai-quality-inspection.html">AI质检学习向导</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">切换手册</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://docs.mech-mind.net/zh/eye-3d-camera/latest/getting-started/index.html">工业级3D相机</a>
+              <ul>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/eye-3d-camera/latest/hardware/camera-models.html">硬件用户手册</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/eye-3d-camera/latest/viewer/eye-viewer.html">Mech-Eye Viewer用户手册</a>
+              </ul>
+            <a class="navbar-item" href="https://docs.mech-mind.net/zh/eye-3d-profiler/latest/getting-started/index.html">3D线激光轮廓测量仪</a>
+              <ul>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/eye-3d-profiler/latest/hardware/profiler-models.html">硬件用户手册</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/eye-3d-profiler/latest/viewer/viewer.html">Mech-Eye Viewer用户手册</a>
+              </ul>
+            <a class="navbar-item">机器人3D视觉引导</a>
+              <ul>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/suite-tutorial/latest/index.html">视觉系统教程</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/suite-software-manual/latest/index.html">视觉系统软件用户手册</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/suite-best-practice/latest/index.html">3D视觉引导典型案例实践</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/robot-integration/latest/communication-basics/index.html">机器人通信与集成</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/suite-service-manual/latest/index.html">视觉系统维护与保养手册</a>
+              </ul>
+            <a class="navbar-item">3D测量与检测</a>
+              <ul>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/3d-measurement-manual/latest/tutorial/index.html">3D测量与检测教程</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/3d-measurement-manual/latest/software-overview/index.html">Mech-MSR软件用户手册</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/3d-measurement-manual/latest/best-practice/index.html">3D测量与检测典型案例实践</a>
+              </ul>
+            <a class="navbar-item">AI质检</a>
+              <ul>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/ai-quality-inspection/latest/tutorial/index.html">AI质检教程</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/dlk-software-manual/latest/index.html">Mech-DLK软件用户手册</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/dlk-sdk-manual/latest/index.html">Mech-DLK SDK用户手册</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/ai-quality-inspection/latest/best-practice/index.html">AI质检典型案例实践</a>
+              </ul>
+            <a class="navbar-item">深度学习辅助工具</a>
+              <ul>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/dlk-software-manual/latest/index.html">Mech-DLK软件用户手册</a>
+              </ul>
+            <a class="navbar-item">工控机及配件文档</a>
+              <ul>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/ipc/latest/ipc.html">工控机用户手册</a>
+              </ul>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">参考站点</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://community.mech-mind.com.cn" target="_blank">社区</a>
+            <a class="navbar-item" href="https://www.mech-mind.com.cn" target="_blank">官网</a>
+            <a class="navbar-item" href="https://downloads.mech-mind.com.cn/?tab=tab-front" target="_blank">下载中心</a>
+           <a class="navbar-item" href="https://docs.mech-mind.net/Home#/zh-CN" target="_blank">旧文档站点</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link"><span></span>简体中文</a>
+          <div class="navbar-dropdown">
+            <a href="javascript:void(0)" class="navbar-item languagechange">English</a>
+            <a href="javascript:void(0)" class="navbar-item languagechange">简体中文</a>
+            <a href="javascript:void(0)" class="navbar-item languagechange">日本語</a>
+            <a href="javascript:void(0)" class="navbar-item languagechange">한국어</a>
+            <a href="javascript:void(0)" class="navbar-item languagechange">Español</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="https://docs.mech-mind.net/zh/home/latest/download.html">下载手册</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body container">
+<div class="nav-container">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../getting-started/index.html">Mech-Eye工业级3D相机用户手册</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../getting-started/index.html">欢迎</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../getting-started/getting-started.html">开始使用相机</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/getting-started.html#getting-started-package-contents">开箱检查</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/getting-started.html#getting-started-camera-diagram">确认接口及指示灯</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/getting-started.html#getting-started-camera-mounting">安装相机</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/getting-started.html#getting-started-connect-camera-and-ipc">连接线缆</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/getting-started.html#warm-up">暖机</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/getting-started.html#getting-started-download-sdk">下载并安装Mech-Eye SDK</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/getting-started.html#getting-started-set-ip">设置IP地址</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/getting-started.html#getting-started-connect-to-camera">连接相机</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/getting-started.html#getting-started-capture">采集图像</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/getting-started.html#getting-started-parameters">调节参数</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/getting-started.html#getting-started-use-data">使用数据</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../getting-started/release-notes.html">Mech-Eye SDK更新说明</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../getting-started/installation-guide.html">Mech-Eye SDK安装指南</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="eye-viewer.html">Mech-Eye Viewer</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="software-interface.html">界面介绍</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="using-viewer.html">操作指南</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="connect-to-camera-and-set-ip.html">设置相机IP地址并连接相机</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="scan-and-data-types.html">采集与查看数据</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="parameter-actions.html">调节参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="save-data.html">保存数据</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="log-operation.html">管理日志</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="parameter-reference.html">参数参考指南</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="parameters-deep-v4.html">DEEP参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="parameters-lsr-v4.html">LSR S、LSR L和LSR XL参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="parameters-nano-v4.html">NANO参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="parameters-nano-ultra.html">NANO ULTRA参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="parameters-pro-xs-v4.html">PRO XS参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="parameters-dlp-v4.html">PRO S和PRO M参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="parameters-uhp-v4.html">UHP-140参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="parameters-welding.html">Welding参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="parameters-v3.html">V3相机参数</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="tools.html">工具使用指南</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="intrinsic-parameter-tool.html">内参工具</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="exposure-assistant.html">3D曝光助手</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="depth-analyzer.html">深度图分析器</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="check-and-configure-2d-cameras.html">查看并配置2D相机</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="fov-calculator.html">视野计算器</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="custom-reference-frame.html">自定义坐标系</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="camera-controller.html">相机管理器</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="full-pallet-simulator.html">满垛模拟器</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api/eye-api.html">Mech-Eye API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api/software-installation.html">Mech-Eye SDK安装指南（Ubuntu）</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api/api-class-hierarchy.html">类的功能层级</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api/operation-workflow.html">使用流程</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api/api-reference.html">Mech-Eye API参考手册</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api/samples.html">例程使用指南</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/cpp-windows.html">C++（Windows）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/cpp-ubuntu.html">C++（Ubuntu）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/csharp.html">C#</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/python-windows.html">Python（Windows）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/python-ubuntu.html">Python（Ubuntu）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/visionpro.html">VisionPro</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/ros1.html">ROS 1接口</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/ros2.html">ROS 2接口</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">工具</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/api-camera-firmware-update.html">固件升级工具</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/api-ip-configuration.html">IP配置工具</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">向下兼容性相关</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/backward-compatibility.html">2.2.0版本的向下兼容性</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/migration-guide.html">迁移指南（从2.1.0版本到2.2.0版本）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/migration-guide-ros.html">ROS接口迁移指南（从2.0.2及以下版本到2.3.4及以上版本）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/cpp-name-change.html">C++参数名称更新（2.0.0及以下版本）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/csharp-name-change.html">C#方法名称与参数名称更新（2.0.0及以下版本）</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">GenICam接口</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../genicam/genicam-introduction.html">什么是GenICam？</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../genicam/halcon.html">HALCON</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/connect-acquire-adjust.html">连接相机、调节参数、采集图像</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/configure-camera-ip-address.html">获取和修改IP设置</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/obtain-depth-map.html">获取深度图</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/obtain-textured-point-cloud.html">获取纹理点云</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/calibration.html">手眼标定</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/obtain-point-cloud-with-normals.html">获取含法向量的点云</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../genicam/genicam-reference.html">参考信息</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/parameter-correspondence.html">GenICam客户端中可用的相机参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/adjust-parameters.html">使用Mech-Eye Viewer调节相机参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/halcon-acquisition-assistant.html">使用HALCON助手控制相机</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/obtain-data-via-api.html">通过Mech-Eye API获取HALCON可读取的点云</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">相机硬件</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hardware/camera-models.html">相机型号对比</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../hardware/manual.html">硬件用户手册</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#safety-instructions">安全须知</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#package-contents">包装清单</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#camera-diagram">功能示意图</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#camera-mounting">安装</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#connect-camera-and-ipc">连接</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#use-the-product">使用</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#maintenance">维护保养</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#disclaimer">免责声明</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#hazardous-substances-declaration">有害物质声明</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#trademark-and-legal-statement">商标与法律声明</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../hardware/specifications.html">技术参数</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-deep.html">DEEP</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-lsr-s.html">LSR S</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-lsr-l.html">LSR L</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-lsr-xl.html">LSR XL</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-nano.html">NANO</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-nano-ultra.html">NANO ULTRA</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-pro-s-pro-m.html">PRO S和PRO M</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-uhp-140.html">UHP-140</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-welding.html">Welding</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-v3.html">V3相机技术参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-dc-power-cable.html">DC电源线</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-ethernet-cable.html">网线</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../extended-reading/extended-reading.html">扩展阅读</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/imaging-mechanism.html">结构光相机工作原理</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/camera-accuracy.html">相机精度</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/reflection-types.html">漫反射、镜面反射和多重反射</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/built-in-parameter-groups.html">预置参数组</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/set-ip-address-of-ipc.html">设置电脑IP地址</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/jumbo-frames.html">启用巨型帧</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/determine-and-adjust-3d-exposure.html">调节3D曝光设置</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/calibration-adjust-2d-3d-exposure.html">调节标定板的2D曝光和3D曝光</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/2d-flash.html">2D补光曝光模式</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/reduce-acquisition-time.html">提高数据采集速度</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">售后支持</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../support/troubleshooting.html">故障排查</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/indicator-light-error.html">接通电源后，相机指示灯指示异常情况</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/device-not-found.html">搜索不到相机</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/cannot-connect-to-device.html">无法连接相机</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/device-disconnects-repeatedly.html">相机反复断开连接</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/displayed-as-virtual-device.html">相机在Mech-Eye Viewer中显示为虚拟设备</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/v3-device-not-found.html">相机首次使用时无法搜索到</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/windows-server-displayed.html">Mech-Eye SDK无法连接相机（Windows Server）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/no-depth-map.html">相机不投光，且未生成深度图</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/acquisition-time-too-long.html">数据采集时间过长</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/viewer-froze.html">Mech-Eye Viewer卡住不响应</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/point-cloud-missing.html">点云缺失</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/point-cloud-fluctuation.html">点云深度波动</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/halcon-device-cannot-be-initialized.html">HALCON：无法连接相机（错误代码5312）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/special-model-upgrade.html">V2相机升级固件后采集的点云有缺失</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../support/faq.html">FAQ</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/read-serial-number.html">如何解读相机序列号？</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/ul-certification.html">Mech-Eye工业级3D相机是否获得了UL认证？</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Mech-Eye工业级3D相机用户手册</span>
+    <span class="version">2.4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../getting-started/index.html">Mech-Eye工业级3D相机用户手册</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../getting-started/index.html">2.4.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../getting-started/index.html">Mech-Eye工业级3D相机用户手册</a></li>
+    <li><a href="eye-viewer.html">Mech-Eye Viewer</a></li>
+    <li><a href="tools.html">工具使用指南</a></li>
+    <li><a href="intrinsic-parameter-tool.html">内参工具</a></li>
+  </ul>
+</nav>
+
+
+
+  <div class="edit-this-page"><a href="file:///D:/Docs-repos/Docs_EyeSDK/eye-3d-camera/modules/viewer/pages/intrinsic-parameter-tool.adoc"></a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="本页内容"
+  data-levels="2">
+  <div class="sidebar-box">
+    <div class="toc-menu" id="toc-menu"></div>
+    <div class="is-this-helpful-box" id="helpful">
+      <h4>该页面是否有帮助？</h4>
+      <div class="btn-row">
+        <a href="#" class="like-btn helpful-btn" id="yesBtn" data-page-rating="1"><i class="icon-like"></i> 是 </a>
+        <a href="#" class="dislike-btn helpful-btn" id="noBtn" data-page-rating="0"><i class="icon-dislike"></i> 否 </a>
+      </div>
+    </div>
+    <div id="likeMsg" class="like-msg">
+      <svg width="20" height="21" viewBox="0 0 20 21" fill="#3ba158" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M10 14.875C11.6797 14.875 12.8516 14.0547 13.5547 13.2344C13.7891 12.9609 14.1797 12.9609 14.4531 13.1562C14.7266 13.3906 14.7266 13.7812 14.5312 14.0547C13.6328 15.0703 12.1484 16.125 10 16.125C7.8125 16.125 6.32812 15.0703 5.42969 14.0547C5.23438 13.7812 5.23438 13.3906 5.50781 13.1562C5.78125 12.9609 6.17188 12.9609 6.40625 13.2344C7.10938 14.0547 8.28125 14.875 10 14.875ZM6.09375 8.11719C5.85938 8.39062 5.66406 8.78125 5.58594 9.09375C5.50781 9.44531 5.15625 9.64062 4.84375 9.5625C4.49219 9.48438 4.29688 9.13281 4.375 8.82031C4.49219 8.3125 4.76562 7.72656 5.15625 7.29688C5.54688 6.82812 6.13281 6.4375 6.875 6.4375C7.57812 6.4375 8.16406 6.82812 8.55469 7.29688C8.94531 7.72656 9.21875 8.3125 9.33594 8.82031C9.41406 9.13281 9.21875 9.48438 8.86719 9.5625C8.55469 9.64062 8.20312 9.44531 8.125 9.09375C8.04688 8.78125 7.85156 8.39062 7.61719 8.11719C7.38281 7.84375 7.10938 7.6875 6.875 7.6875C6.60156 7.6875 6.32812 7.84375 6.09375 8.11719ZM11.0938 9.5625C10.7422 9.48438 10.5469 9.13281 10.625 8.82031C10.7422 8.3125 11.0156 7.72656 11.4062 7.29688C11.7969 6.82812 12.3828 6.4375 13.125 6.4375C13.8281 6.4375 14.4141 6.82812 14.8047 7.29688C15.1953 7.72656 15.4688 8.3125 15.5859 8.82031C15.6641 9.13281 15.4688 9.48438 15.1172 9.5625C14.8047 9.64062 14.4531 9.44531 14.375 9.09375C14.2969 8.78125 14.1016 8.39062 13.8672 8.11719C13.6328 7.84375 13.3594 7.6875 13.125 7.6875C12.8516 7.6875 12.5781 7.84375 12.3438 8.11719C12.1094 8.39062 11.9141 8.78125 11.8359 9.09375C11.7578 9.44531 11.4062 9.64062 11.0938 9.5625ZM20 10.5C20 16.0469 15.5078 20.5 10 20.5C4.45312 20.5 0 16.0469 0 10.5C0 4.99219 4.45312 0.5 10 0.5C15.5078 0.5 20 4.99219 20 10.5ZM10 1.75C5.15625 1.75 1.25 5.69531 1.25 10.5C1.25 15.3438 5.15625 19.25 10 19.25C14.8047 19.25 18.75 15.3438 18.75 10.5C18.75 5.69531 14.8047 1.75 10 1.75Z">
+        </path>
+      </svg>
+      <h4>感谢您的支持！</h4>
+    </div>
+    <div id="dislikeMsg" class="dislike-msg">
+      <h4>请告知我们如何改进：<h4>
+          <h4>请访问我们的<a
+              href="https://community.mech-mind.com.cn/tags/c/11-category/11/%E6%96%87%E6%A1%A3%E9%9C%80%E6%B1%82%E5%8F%8D%E9%A6%88" target="_blank">社区</a>反馈建议。
+          </h4>
+    </div>
+  </div>
+</aside>    <div class="right-icon">
+        <button id="backtotop-btn" title="返回页面顶部"></button>
+        <button id="feedback-btn" title="反馈意见"></button>
+    </div>
+   <div class="v-modal v-modal-hide" id="v-modal">
+    <div class="v-modal-box" id="v-modal-box">
+      <div class="v-modal-box-close">
+        <div id="v-modal-box-title" class="v-modal-box-title">问题反馈</div>
+        <div id="v-modal-box-close" class="v-modal-box-close-icon ">
+          <img src="../../../_/img/closeDialog.png" alt="">
+        </div>
+      </div>
+      <div class="v-modal-content">
+        <iframe frameborder="0" height="100%" width="100%" src="https://alidocs.dingtalk.com/notable/share/form/v011GXn4BojPoMbODQ4_YV7GM4j_cOfoiBe" id="v-modal-iframe"></iframe>
+      </div>
+    </div>
+   </div><article class="doc" id="test-comment">
+<div class="waterMark"></div>
+<h1 class="page">内参工具</h1>
+    <div class="article-banner">
+      <p>您正在查看最新版本（V2.4.1）的文档。如果您想查阅其他版本的文档，可以点击页面右上角“切换版本”按钮进行切换。</p>
+      <p>■ 如果您不确定当前使用的产品是哪个版本，请随时联系梅卡曼德技术支持。</p>
+    </div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>该工具用于检查相机的内参是否准确、矫正内参及恢复出厂内参。只有内参准确，才能保证计算得出的各点坐标准确。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="check-preparation"><a class="anchor" href="#check-preparation"></a>准备工作</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>检查内参前，请准备好相机随附的标定板。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>将标定板置于相机视野内，并确保标定板位于相机的推荐工作距离内，且垂直于相机中轴：</p>
+<div class="imageblock text-left">
+<div class="content">
+<img src="_images/perpendicular-to-camera.png" alt="perpendicular to camera">
+</div>
+</div>
+</li>
+<li>
+<p>获取标定板的2D图和深度图。请确保获取的2D图和深度图符合如下标准：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>标定板上圆所在的区域拍摄完整。</p>
+</li>
+<li>
+<p>2D图不过亮或过暗，标定板上的圆清晰完整。</p>
+</li>
+<li>
+<p>深度图中标定板上的圆完整。</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>标定板2D图示例如下：</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">图像过暗，无法清晰识别标定板上的圆。</th>
+<th class="tableblock halign-center valign-middle" colspan="2">标定板上的圆完整，边缘清晰可见。</th>
+<th class="tableblock halign-center valign-middle">图像过亮，无法清晰识别标定板上的圆。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image"><img src="_images/underexposure.png" alt="underexposure" width="250"></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image"><img src="_images/normal1.png" alt="normal1" width="250"></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image"><img src="_images/normal2.png" alt="normal2" width="250"></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image"><img src="_images/overexposure.png" alt="overexposure" width="250"></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>如获取的2D图不符合标准，请调节<a href="parameters-dlp-v4.html#image-2d" class="xref page">2D图相关参数</a>。</p>
+</div>
+<div class="paragraph">
+<p>标定板深度图示例如下：</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">曝光时间过短，标定板上的圆不完整。</th>
+<th class="tableblock halign-center valign-middle" colspan="2">标定板上的圆/整个标定板完整无缺失。</th>
+<th class="tableblock halign-center valign-middle">曝光时间过长，标定板上的圆部分或全部缺失。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image"><img src="_images/underexposure_3d.png" alt="underexposure 3d" width="250"></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image"><img src="_images/normal1_3d.png" alt="normal1 3d" width="250"></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image"><img src="_images/normal2_3d.png" alt="normal2 3d" width="250"></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image"><img src="_images/overexposure_3d.png" alt="overexposure 3d" width="250"></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>如获取的深度图不符合标准，请调节<a href="parameters-dlp-v4.html#depth-map" class="xref page">深度图相关参数</a>。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+可参考<a href="../extended-reading/calibration-adjust-2d-3d-exposure.html" class="xref page">调节标定板的2D曝光和3D曝光</a>调节相关参数。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="check-intrinsic-parameters"><a class="anchor" href="#check-intrinsic-parameters"></a>检查内参</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>单击菜单栏中的<strong>工具</strong>菜单，选择<strong>内参工具</strong>，打开<strong>内参工具</strong>。</p>
+</div>
+<div class="paragraph">
+<p>使用<strong>内参工具</strong>检查相机内参时，请执行如下步骤。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>单击<strong>1. 放置标定板并检查图像质量</strong>中的<b class="button">采集图像</b>，获取标定板的2D图和深度图。确认图像是否符合标准。</p>
+</li>
+<li>
+<p>在<strong>2. 选择放置的标定板型号</strong>中设置标定板的规格：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如使用标准型号的标定板，单击右侧小三角选择标定板型号。</p>
+</li>
+<li>
+<p>如使用定制标定板，请先选择<strong>自定义</strong>，再根据工程师提供的信息设置<strong>型号</strong>、<strong>行</strong>、<strong>列</strong>及<strong>间距</strong>。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>在<strong>3. 检查内参</strong>中单击<b class="button">检查内参</b>，开始检查相机内参。检查完成后自动弹出检查结果的弹窗。</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+如出现错误提示，请根据下一节的内容排查问题。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="troubleshooting"><a class="anchor" href="#troubleshooting"></a>解决检查内参可能出现的问题</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>检查内参时，可能遇到如下问题。</p>
+</div>
+<div class="sect2">
+<h3 id="circles-not-detected"><a class="anchor" href="#circles-not-detected"></a>未检测到标定板上的圆</h3>
+<div class="paragraph">
+<p><strong>问题描述：</strong></p>
+</div>
+<div class="paragraph">
+<p>内参检查结果弹窗提示<strong>未检测到标定板上的圆</strong>。</p>
+</div>
+<div class="paragraph">
+<p><strong>解决方案：</strong></p>
+</div>
+<div class="paragraph">
+<p>请尝试如下解决方案：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>检查标定板型号或规格是否正确。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如错误，请输入正确的标定板型号或规格。然后，请重新检查相机内参。</p>
+</li>
+<li>
+<p>如无误，请查看下一步。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>检查2D图或深度图是否符合标准，请参考<a href="#check-preparation">2D图与深度图检查标准</a>。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如2D图不符合标准，请调节<a href="parameters-dlp-v4.html#image-2d" class="xref page">2D图相关参数</a>；如深度图不符合标准，请调节<a href="parameters-dlp-v4.html#depth-map" class="xref page">深度图相关参数</a>。然后，请重新检查相机内参。</p>
+</li>
+<li>
+<p>如图像符合标准，请查看下一步。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>使用<strong>画辅助圆</strong>功能辅助检测。具体操作说明详见<a href="#draw-aid-circles">画辅助圆</a>。</p>
+</li>
+<li>
+<p>在<strong>3. 检查内参</strong>中单击<b class="button">检查内参</b>，重新检查内参。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如内参检查成功，流程结束。</p>
+</li>
+<li>
+<p>如内参检查结果弹窗仍提示<strong>未检测到标定板上的圆</strong>，请查看下一步。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>使用<strong>编辑特征检测参数</strong>功能辅助检测。具体操作说明详见<a href="#edit-feature-detection-parameters">编辑特征检测参数</a>。</p>
+</li>
+<li>
+<p>在<strong>3. 检查内参</strong>中单击<b class="button">检查内参</b>，重新检查内参。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如内参检查成功，流程结束。</p>
+</li>
+<li>
+<p>如内参检查结果弹窗仍提示<strong>未检测到标定板上的圆</strong>，请联系技术支持。</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="feature-points-missing"><a class="anchor" href="#feature-points-missing"></a>深度图中没有有效的特征点</h3>
+<div class="paragraph">
+<p><strong>问题描述：</strong></p>
+</div>
+<div class="paragraph">
+<p>内参检查结果弹窗提示<strong>深度图中没有有效的特征点</strong>。</p>
+</div>
+<div class="paragraph">
+<p><strong>解决方案：</strong></p>
+</div>
+<div class="paragraph">
+<p>检查深度图是否符合标准，请参考<a href="#check-preparation">2D图与深度图检查标准</a>。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>如深度图不符合标准，请调节<a href="parameters-dlp-v4.html#depth-map" class="xref page">深度图相关参数</a>。然后，请重新检查相机内参。</p>
+</li>
+<li>
+<p>如深度图符合标准，请联系技术支持。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="assistive-functions"><a class="anchor" href="#assistive-functions"></a>辅助功能</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>内参工具</strong>提供以下功能辅助解决常见问题。</p>
+</div>
+<div class="sect2">
+<h3 id="correct-intrinsic-parameters"><a class="anchor" href="#correct-intrinsic-parameters"></a>矫正内参</h3>
+<div class="paragraph">
+<p>该功能可辅助解决内参误差较大的问题。内参检查结果中的<strong>标量差</strong>值超过以下数值时，认为内参误差较大，可使用<strong>矫正内参</strong>功能：</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">型号</th>
+<th class="tableblock halign-center valign-middle">标量差值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">DEEP、Log S、Log M</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">0.6%</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">LSR L</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">0.5%</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">其他型号</p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock">0.3%</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+UHP系列不可使用<strong>矫正内参</strong>功能。如内参误差较大，请联系技术支持。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>使用<strong>矫正内参</strong>功能时，应按以下要求放置标定板：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>使标定板垂直于相机中轴：</p>
+<div class="imageblock text-left">
+<div class="content">
+<img src="_images/perpendicular-to-camera.png" alt="perpendicular to camera">
+</div>
+</div>
+</li>
+<li>
+<p>将标定板分别放置在以下高度：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>目标物体的顶面</p>
+</li>
+<li>
+<p>目标物体的底面</p>
+<div class="paragraph">
+<p>例如：从料筐中抓取物体或拆码垛应用，需将标定板放置在料筐或垛的顶部及底部。</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock text-left">
+<div class="content">
+<img src="_images/intri-correction-height.png" alt="intri correction height" width="400">
+</div>
+</div>
+</li>
+<li>
+<p>在上述的两个高度下，分别采集标定板位于目标物体中心和四个角的5组数据。</p>
+<table class="tableblock frame-none grid-rows stripes-none fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock"><span class="image"><img src="_images/intri-correction-position-1.png" alt="intri correction position 1" width="400"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><span class="image"><img src="_images/fov.png" alt="fov"></span>：相机视野</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><span class="image"><img src="_images/object.png" alt="object"></span>：目标物体</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>如目标物体的大小接近相机的最大视野，避免将标定板放在视野边缘处。建议标定板外侧边缘和相机视野边缘间的距离，至少达到视野长度或宽度的五分之一：</p>
+<table class="tableblock frame-none grid-rows stripes-none fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock"><span class="image"><img src="_images/intri-correction-position-2.png" alt="intri correction position 2" width="400"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><span class="image"><img src="_images/fov.png" alt="fov"></span>：相机视野</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><span class="image"><img src="_images/object.png" alt="object"></span>：目标物体</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>请执行以下步骤使用<strong>矫正内参</strong>功能：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>按上述要求放置标定板。</p>
+</li>
+<li>
+<p>勾选<strong>矫正内参</strong>后，单击<b class="button">采集数据</b>。</p>
+</li>
+<li>
+<p>移动标定板，再次单击<b class="button">采集数据</b>。</p>
+</li>
+<li>
+<p>按照上述要求采集至少10组数据后，单击<b class="button">矫正内参</b>。完成后将自动弹出矫正结果的弹窗。</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="draw-aid-circles"><a class="anchor" href="#draw-aid-circles"></a>画辅助圆</h3>
+<div class="paragraph">
+<p>该功能可辅助解决<a href="#circles-not-detected">未检测到标定板上的圆</a>的问题。</p>
+</div>
+<div class="paragraph">
+<p>请执行以下步骤使用<strong>画辅助圆</strong>功能：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>单击<strong>3. 检查内参</strong>中的<b class="button">画辅助圆</b>。</p>
+</li>
+<li>
+<p>在2D图上找到一个完整的标定板上的圆。移动光标至该圆圆心位置，按住<kbd>Ctrl</kbd>单击鼠标左键，向斜上或斜下方向移动光标调整辅助圆的大小。再次单击完成画圆。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>仅需要画一个辅助圆，辅助圆应与标定板上圆的边缘尽量贴合。</p>
+</li>
+<li>
+<p>如需重新画辅助圆，请重新单击<b class="button">画辅助圆</b>。</p>
+</li>
+<li>
+<p>将光标移动至2D图上，滚动鼠标滚轮，可以放大或缩小2D图。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit-feature-detection-parameters"><a class="anchor" href="#edit-feature-detection-parameters"></a>编辑特征检测参数（高级）</h3>
+<div class="paragraph">
+<p>该功能可辅助解决<a href="#circles-not-detected">未检测到标定板上的圆</a>的问题。</p>
+</div>
+<div class="paragraph">
+<p>请执行以下步骤使用<strong>编辑特征检测参数</strong>功能：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>单击<strong>3. 检查内参</strong>中<strong>编辑特征检测参数（高级）</strong>。</p>
+</li>
+<li>
+<p>请根据实际情况调整显示的特征检测参数。</p>
+</li>
+<li>
+<p>如无法拍摄到标定板上的所有圆，请勾选<strong>允许部分圆缺失</strong>，并编辑新增的特征检测参数。</p>
+</li>
+<li>
+<p>在<strong>3. 检查内参</strong>中单击<b class="button">检查内参</b>，重新检查内参。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="tools.html">工具使用指南</a></span>
+  <span class="next"><a href="exposure-assistant.html">3D曝光助手</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <div class="footer-content container">
+    <p>© <span id="footer-copyright-year">2025</span> Mech-Mind Robotics Technologies Ltd.</p>
+    <a href="https://docs.mech-mind.net/zh/home/latest/disclaimer.html" target="_blank">免责声明</a>
+  </div>
+</footer>
+<div class="index_cnt_foot" id="index_cnt_foot">
+  <div class="index_cnt_foot_w">
+    <div class="index_cnt_foot_left">
+      <h4><span name="_index_cnt_foot_left2">我们重视您的隐私</span></h4>
+      <p><span name="_index_cnt_foot_left22">我们使用 cookie 为您在我们的网站上提供最佳体验。继续使用该网站即表示您同意使用 cookie。如果您拒绝，将使用一个单独的 cookie
+          来确保您在访问本网站时不会被跟踪或记住。</span></p>
+    </div>
+    <div class="index_cnt_foot_right">
+      <li class="index_cnt_foot_right1" style="display:none!important">
+        <span name="_index_cnt_foot_right"><a id="Preference"
+            href="javascript:void(0);">Preference</a></span><!--ea_span_index_cnt_foot_right-->
+      </li>
+      <li id="close_foot">
+        <span name="_index_cnt_foot_right1"><a href="javascript:void(0);">同意</a></span>
+      </li>
+      <li class="index_cnt_foot_right12" id="index_cnt_foot_right12">
+        <span name="_index_cnt_foot_right2"><a href="javascript:void(0);">不同意</a></span>
+      </li>
+    </div>
+  </div>
+</div><script>
+  window.addEventListener('load', function() {
+    // 在这里执行你的代码
+      var b = document.createElement("script");
+      b.src = "https://api.ipify.org?format=jsonp&callback=getIP";
+      b.async = true;
+      document.body.appendChild(b);
+  });
+  function getIP (json) {
+    window.getUserIp = json.ip
+  }
+</script>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/lunr-languages.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script"
+        data-site-root-path="../../.."
+        data-snippet-length="100"
+        data-additional-filters="true"
+        data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+<script async src="../../../_/js/vendor/tabs.js" data-sync-storage-key="preferred-tab"></script>
+<script async src="https://docs.mech-mind.net/download/js/medium-zoom.js"></script>
+<script>
+  function setCookie (name, value, days) {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+  function getCookie (objname) {
+
+    var arrstr = document.cookie.split("; ");
+
+    for (var i = 0; i < arrstr.length; i++) {
+
+      var temp = arrstr[i].split("=");
+
+      if (temp[0] == objname) return unescape(temp[1]);
+
+    }
+
+  }
+  if (getCookie('key')) {
+    document.getElementById('index_cnt_foot').style.visibility = 'hidden'
+  } else {
+    document.getElementById('index_cnt_foot').style.visibility = 'initial'
+  }
+  var acceptBtn = document.getElementById('close_foot')
+  var disacceptBtn = document.getElementById('index_cnt_foot_right12')
+  acceptBtn.onclick = function () {
+    setCookie("key", "1", 7);
+    document.getElementById('index_cnt_foot').style.visibility = 'hidden'
+  }
+  disacceptBtn.onclick = function () {
+    setCookie("key", "1", 7);
+    document.getElementById('index_cnt_foot').style.visibility = 'hidden'
+  }
+</script>  </body>
+</html>

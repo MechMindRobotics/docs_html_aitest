@@ -1,0 +1,2061 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>开始使用相机</title>
+    <link rel="canonical" href="https://docs.mech-mind.net/zh/eye-3d-camera/2.4.1/getting-started/getting-started.html">
+    <link rel="prev" href="index.html">
+    <link rel="next" href="release-notes.html">
+    <meta name="generator" content="Antora 3.1.10">
+    <link rel="stylesheet" href="../../../_/css/site.css?v=1">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
+    <meta class="swiftype" name="title" data-type="string" content="开始使用相机">
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-THGV3F2');</script>
+    <!-- End Google Tag Manager -->
+    <script>var uiRootPath = '../../../_'</script>
+    <link rel="icon" href="../../../_/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body class="article">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THGV3F2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+<header class="header">
+  <nav class="navbar container">
+    <div class="navbar-brand">
+      <a href="">
+         <img class="navbar-logo" src="../../../_/img/logo.svg" alt="" /> 
+      </a>
+      <a class="navbar-item navbar-title" href="../../../index.html">返回首页</a>
+
+
+      <div class="navbar-item search hide-for-print">
+        <div id="search-field" class="field has-filter">
+          <i class="icon-search"></i>
+          <input id="search-input" type="text" placeholder="输入关键词搜索">
+        </div>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">学习向导</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://docs.mech-mind.net/zh/home/latest/vision-system.html">3D视觉引导学习向导</a>
+            <a class="navbar-item" href="https://docs.mech-mind.net/zh/home/latest/measurement-system.html">3D测量与检测学习向导</a>
+            <a class="navbar-item" href="https://docs.mech-mind.net/zh/home/latest/ai-quality-inspection.html">AI质检学习向导</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">切换手册</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://docs.mech-mind.net/zh/eye-3d-camera/latest/getting-started/index.html">工业级3D相机</a>
+              <ul>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/eye-3d-camera/latest/hardware/camera-models.html">硬件用户手册</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/eye-3d-camera/latest/viewer/eye-viewer.html">Mech-Eye Viewer用户手册</a>
+              </ul>
+            <a class="navbar-item" href="https://docs.mech-mind.net/zh/eye-3d-profiler/latest/getting-started/index.html">3D线激光轮廓测量仪</a>
+              <ul>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/eye-3d-profiler/latest/hardware/profiler-models.html">硬件用户手册</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/eye-3d-profiler/latest/viewer/viewer.html">Mech-Eye Viewer用户手册</a>
+              </ul>
+            <a class="navbar-item">机器人3D视觉引导</a>
+              <ul>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/suite-tutorial/latest/index.html">视觉系统教程</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/suite-software-manual/latest/index.html">视觉系统软件用户手册</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/suite-best-practice/latest/index.html">3D视觉引导典型案例实践</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/robot-integration/latest/communication-basics/index.html">机器人通信与集成</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/suite-service-manual/latest/index.html">视觉系统维护与保养手册</a>
+              </ul>
+            <a class="navbar-item">3D测量与检测</a>
+              <ul>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/3d-measurement-manual/latest/tutorial/index.html">3D测量与检测教程</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/3d-measurement-manual/latest/software-overview/index.html">Mech-MSR软件用户手册</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/3d-measurement-manual/latest/best-practice/index.html">3D测量与检测典型案例实践</a>
+              </ul>
+            <a class="navbar-item">AI质检</a>
+              <ul>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/ai-quality-inspection/latest/tutorial/index.html">AI质检教程</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/dlk-software-manual/latest/index.html">Mech-DLK软件用户手册</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/dlk-sdk-manual/latest/index.html">Mech-DLK SDK用户手册</a>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/ai-quality-inspection/latest/best-practice/index.html">AI质检典型案例实践</a>
+              </ul>
+            <a class="navbar-item">深度学习辅助工具</a>
+              <ul>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/dlk-software-manual/latest/index.html">Mech-DLK软件用户手册</a>
+              </ul>
+            <a class="navbar-item">工控机及配件文档</a>
+              <ul>
+                <a class="navbar-item" href="https://docs.mech-mind.net/zh/ipc/latest/ipc.html">工控机用户手册</a>
+              </ul>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">参考站点</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://community.mech-mind.com.cn" target="_blank">社区</a>
+            <a class="navbar-item" href="https://www.mech-mind.com.cn" target="_blank">官网</a>
+            <a class="navbar-item" href="https://downloads.mech-mind.com.cn/?tab=tab-front" target="_blank">下载中心</a>
+           <a class="navbar-item" href="https://docs.mech-mind.net/Home#/zh-CN" target="_blank">旧文档站点</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link"><span></span>简体中文</a>
+          <div class="navbar-dropdown">
+            <a href="javascript:void(0)" class="navbar-item languagechange">English</a>
+            <a href="javascript:void(0)" class="navbar-item languagechange">简体中文</a>
+            <a href="javascript:void(0)" class="navbar-item languagechange">日本語</a>
+            <a href="javascript:void(0)" class="navbar-item languagechange">한국어</a>
+            <a href="javascript:void(0)" class="navbar-item languagechange">Español</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="https://docs.mech-mind.net/zh/home/latest/download.html">下载手册</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body container">
+<div class="nav-container">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Mech-Eye工业级3D相机用户手册</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">欢迎</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="getting-started.html">开始使用相机</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#getting-started-package-contents">开箱检查</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#getting-started-camera-diagram">确认接口及指示灯</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#getting-started-camera-mounting">安装相机</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#getting-started-connect-camera-and-ipc">连接线缆</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#warm-up">暖机</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#getting-started-download-sdk">下载并安装Mech-Eye SDK</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#getting-started-set-ip">设置IP地址</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#getting-started-connect-to-camera">连接相机</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#getting-started-capture">采集图像</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#getting-started-parameters">调节参数</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#getting-started-use-data">使用数据</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="release-notes.html">Mech-Eye SDK更新说明</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="installation-guide.html">Mech-Eye SDK安装指南</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../viewer/eye-viewer.html">Mech-Eye Viewer</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../viewer/software-interface.html">界面介绍</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../viewer/using-viewer.html">操作指南</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/connect-to-camera-and-set-ip.html">设置相机IP地址并连接相机</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/scan-and-data-types.html">采集与查看数据</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/parameter-actions.html">调节参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/save-data.html">保存数据</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/log-operation.html">管理日志</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../viewer/parameter-reference.html">参数参考指南</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/parameters-deep-v4.html">DEEP参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/parameters-lsr-v4.html">LSR S、LSR L和LSR XL参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/parameters-nano-v4.html">NANO参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/parameters-nano-ultra.html">NANO ULTRA参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/parameters-pro-xs-v4.html">PRO XS参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/parameters-dlp-v4.html">PRO S和PRO M参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/parameters-uhp-v4.html">UHP-140参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/parameters-welding.html">Welding参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/parameters-v3.html">V3相机参数</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../viewer/tools.html">工具使用指南</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/intrinsic-parameter-tool.html">内参工具</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/exposure-assistant.html">3D曝光助手</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/depth-analyzer.html">深度图分析器</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/check-and-configure-2d-cameras.html">查看并配置2D相机</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/fov-calculator.html">视野计算器</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/custom-reference-frame.html">自定义坐标系</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/camera-controller.html">相机管理器</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../viewer/full-pallet-simulator.html">满垛模拟器</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api/eye-api.html">Mech-Eye API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api/software-installation.html">Mech-Eye SDK安装指南（Ubuntu）</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api/api-class-hierarchy.html">类的功能层级</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api/operation-workflow.html">使用流程</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api/api-reference.html">Mech-Eye API参考手册</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api/samples.html">例程使用指南</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/cpp-windows.html">C++（Windows）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/cpp-ubuntu.html">C++（Ubuntu）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/csharp.html">C#</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/python-windows.html">Python（Windows）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/python-ubuntu.html">Python（Ubuntu）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/visionpro.html">VisionPro</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/ros1.html">ROS 1接口</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/ros2.html">ROS 2接口</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">工具</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/api-camera-firmware-update.html">固件升级工具</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/api-ip-configuration.html">IP配置工具</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">向下兼容性相关</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/backward-compatibility.html">2.2.0版本的向下兼容性</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/migration-guide.html">迁移指南（从2.1.0版本到2.2.0版本）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/migration-guide-ros.html">ROS接口迁移指南（从2.0.2及以下版本到2.3.4及以上版本）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/cpp-name-change.html">C++参数名称更新（2.0.0及以下版本）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../api/csharp-name-change.html">C#方法名称与参数名称更新（2.0.0及以下版本）</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">GenICam接口</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../genicam/genicam-introduction.html">什么是GenICam？</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../genicam/halcon.html">HALCON</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/connect-acquire-adjust.html">连接相机、调节参数、采集图像</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/configure-camera-ip-address.html">获取和修改IP设置</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/obtain-depth-map.html">获取深度图</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/obtain-textured-point-cloud.html">获取纹理点云</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/calibration.html">手眼标定</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/obtain-point-cloud-with-normals.html">获取含法向量的点云</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../genicam/genicam-reference.html">参考信息</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/parameter-correspondence.html">GenICam客户端中可用的相机参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/adjust-parameters.html">使用Mech-Eye Viewer调节相机参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/halcon-acquisition-assistant.html">使用HALCON助手控制相机</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../genicam/obtain-data-via-api.html">通过Mech-Eye API获取HALCON可读取的点云</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">相机硬件</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../hardware/camera-models.html">相机型号对比</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../hardware/manual.html">硬件用户手册</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#safety-instructions">安全须知</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#package-contents">包装清单</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#camera-diagram">功能示意图</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#camera-mounting">安装</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#connect-camera-and-ipc">连接</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#use-the-product">使用</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#maintenance">维护保养</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#disclaimer">免责声明</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#hazardous-substances-declaration">有害物质声明</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/manual.html#trademark-and-legal-statement">商标与法律声明</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../hardware/specifications.html">技术参数</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-deep.html">DEEP</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-lsr-s.html">LSR S</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-lsr-l.html">LSR L</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-lsr-xl.html">LSR XL</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-nano.html">NANO</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-nano-ultra.html">NANO ULTRA</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-pro-s-pro-m.html">PRO S和PRO M</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-uhp-140.html">UHP-140</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-welding.html">Welding</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-v3.html">V3相机技术参数</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-dc-power-cable.html">DC电源线</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../hardware/specifications-ethernet-cable.html">网线</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../extended-reading/extended-reading.html">扩展阅读</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/imaging-mechanism.html">结构光相机工作原理</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/camera-accuracy.html">相机精度</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/reflection-types.html">漫反射、镜面反射和多重反射</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/built-in-parameter-groups.html">预置参数组</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/set-ip-address-of-ipc.html">设置电脑IP地址</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/jumbo-frames.html">启用巨型帧</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/determine-and-adjust-3d-exposure.html">调节3D曝光设置</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/calibration-adjust-2d-3d-exposure.html">调节标定板的2D曝光和3D曝光</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/2d-flash.html">2D补光曝光模式</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../extended-reading/reduce-acquisition-time.html">提高数据采集速度</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">售后支持</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../support/troubleshooting.html">故障排查</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/indicator-light-error.html">接通电源后，相机指示灯指示异常情况</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/device-not-found.html">搜索不到相机</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/cannot-connect-to-device.html">无法连接相机</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/device-disconnects-repeatedly.html">相机反复断开连接</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/displayed-as-virtual-device.html">相机在Mech-Eye Viewer中显示为虚拟设备</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/v3-device-not-found.html">相机首次使用时无法搜索到</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/windows-server-displayed.html">Mech-Eye SDK无法连接相机（Windows Server）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/no-depth-map.html">相机不投光，且未生成深度图</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/acquisition-time-too-long.html">数据采集时间过长</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/viewer-froze.html">Mech-Eye Viewer卡住不响应</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/point-cloud-missing.html">点云缺失</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/point-cloud-fluctuation.html">点云深度波动</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/halcon-device-cannot-be-initialized.html">HALCON：无法连接相机（错误代码5312）</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/special-model-upgrade.html">V2相机升级固件后采集的点云有缺失</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../support/faq.html">FAQ</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/read-serial-number.html">如何解读相机序列号？</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../support/ul-certification.html">Mech-Eye工业级3D相机是否获得了UL认证？</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Mech-Eye工业级3D相机用户手册</span>
+    <span class="version">2.4.1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="index.html">Mech-Eye工业级3D相机用户手册</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">2.4.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Mech-Eye工业级3D相机用户手册</a></li>
+    <li><a href="getting-started.html">开始使用相机</a></li>
+  </ul>
+</nav>
+
+
+
+  <div class="edit-this-page"><a href="file:///D:/Docs-repos/Docs_EyeSDK/eye-3d-camera/modules/getting-started/pages/getting-started.adoc"></a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="本页内容"
+  data-levels="2">
+  <div class="sidebar-box">
+    <div class="toc-menu" id="toc-menu"></div>
+    <div class="is-this-helpful-box" id="helpful">
+      <h4>该页面是否有帮助？</h4>
+      <div class="btn-row">
+        <a href="#" class="like-btn helpful-btn" id="yesBtn" data-page-rating="1"><i class="icon-like"></i> 是 </a>
+        <a href="#" class="dislike-btn helpful-btn" id="noBtn" data-page-rating="0"><i class="icon-dislike"></i> 否 </a>
+      </div>
+    </div>
+    <div id="likeMsg" class="like-msg">
+      <svg width="20" height="21" viewBox="0 0 20 21" fill="#3ba158" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M10 14.875C11.6797 14.875 12.8516 14.0547 13.5547 13.2344C13.7891 12.9609 14.1797 12.9609 14.4531 13.1562C14.7266 13.3906 14.7266 13.7812 14.5312 14.0547C13.6328 15.0703 12.1484 16.125 10 16.125C7.8125 16.125 6.32812 15.0703 5.42969 14.0547C5.23438 13.7812 5.23438 13.3906 5.50781 13.1562C5.78125 12.9609 6.17188 12.9609 6.40625 13.2344C7.10938 14.0547 8.28125 14.875 10 14.875ZM6.09375 8.11719C5.85938 8.39062 5.66406 8.78125 5.58594 9.09375C5.50781 9.44531 5.15625 9.64062 4.84375 9.5625C4.49219 9.48438 4.29688 9.13281 4.375 8.82031C4.49219 8.3125 4.76562 7.72656 5.15625 7.29688C5.54688 6.82812 6.13281 6.4375 6.875 6.4375C7.57812 6.4375 8.16406 6.82812 8.55469 7.29688C8.94531 7.72656 9.21875 8.3125 9.33594 8.82031C9.41406 9.13281 9.21875 9.48438 8.86719 9.5625C8.55469 9.64062 8.20312 9.44531 8.125 9.09375C8.04688 8.78125 7.85156 8.39062 7.61719 8.11719C7.38281 7.84375 7.10938 7.6875 6.875 7.6875C6.60156 7.6875 6.32812 7.84375 6.09375 8.11719ZM11.0938 9.5625C10.7422 9.48438 10.5469 9.13281 10.625 8.82031C10.7422 8.3125 11.0156 7.72656 11.4062 7.29688C11.7969 6.82812 12.3828 6.4375 13.125 6.4375C13.8281 6.4375 14.4141 6.82812 14.8047 7.29688C15.1953 7.72656 15.4688 8.3125 15.5859 8.82031C15.6641 9.13281 15.4688 9.48438 15.1172 9.5625C14.8047 9.64062 14.4531 9.44531 14.375 9.09375C14.2969 8.78125 14.1016 8.39062 13.8672 8.11719C13.6328 7.84375 13.3594 7.6875 13.125 7.6875C12.8516 7.6875 12.5781 7.84375 12.3438 8.11719C12.1094 8.39062 11.9141 8.78125 11.8359 9.09375C11.7578 9.44531 11.4062 9.64062 11.0938 9.5625ZM20 10.5C20 16.0469 15.5078 20.5 10 20.5C4.45312 20.5 0 16.0469 0 10.5C0 4.99219 4.45312 0.5 10 0.5C15.5078 0.5 20 4.99219 20 10.5ZM10 1.75C5.15625 1.75 1.25 5.69531 1.25 10.5C1.25 15.3438 5.15625 19.25 10 19.25C14.8047 19.25 18.75 15.3438 18.75 10.5C18.75 5.69531 14.8047 1.75 10 1.75Z">
+        </path>
+      </svg>
+      <h4>感谢您的支持！</h4>
+    </div>
+    <div id="dislikeMsg" class="dislike-msg">
+      <h4>请告知我们如何改进：<h4>
+          <h4>请访问我们的<a
+              href="https://community.mech-mind.com.cn/tags/c/11-category/11/%E6%96%87%E6%A1%A3%E9%9C%80%E6%B1%82%E5%8F%8D%E9%A6%88" target="_blank">社区</a>反馈建议。
+          </h4>
+    </div>
+  </div>
+</aside>    <div class="right-icon">
+        <button id="backtotop-btn" title="返回页面顶部"></button>
+        <button id="feedback-btn" title="反馈意见"></button>
+    </div>
+   <div class="v-modal v-modal-hide" id="v-modal">
+    <div class="v-modal-box" id="v-modal-box">
+      <div class="v-modal-box-close">
+        <div id="v-modal-box-title" class="v-modal-box-title">问题反馈</div>
+        <div id="v-modal-box-close" class="v-modal-box-close-icon ">
+          <img src="../../../_/img/closeDialog.png" alt="">
+        </div>
+      </div>
+      <div class="v-modal-content">
+        <iframe frameborder="0" height="100%" width="100%" src="https://alidocs.dingtalk.com/notable/share/form/v011GXn4BojPoMbODQ4_YV7GM4j_cOfoiBe" id="v-modal-iframe"></iframe>
+      </div>
+    </div>
+   </div><article class="doc" id="test-comment">
+<div class="waterMark"></div>
+<h1 class="page">开始使用相机</h1>
+    <div class="article-banner">
+      <p>您正在查看最新版本（V2.4.1）的文档。如果您想查阅其他版本的文档，可以点击页面右上角“切换版本”按钮进行切换。</p>
+      <p>■ 如果您不确定当前使用的产品是哪个版本，请随时联系梅卡曼德技术支持。</p>
+    </div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>本章将引导你完成从开箱检查到使用Mech-Eye Viewer采集图像的一系列操作。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>图示仅供参考，产品请以实物为准。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-started-package-contents"><a class="anchor" href="#getting-started-package-contents"></a>1. 开箱检查</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>收到包装后，请确认包装完好无破损。</p>
+</li>
+<li>
+<p>找到包装内的《包装清单》，并参照该清单检查物品和配件无缺失或损坏。</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+以下列表仅供参考，请以实际包装内的《包装清单》为准。
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-none grid-none stripes-none fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>相机</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>使用说明书</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../hardware/_images/camera-package-content.png" alt="camera package content" width="200">
+</div>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../hardware/_images/user_manual.png" alt="user manual" width="60">
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>DC电源线</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>网线</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../hardware/_images/dc_power_cable.png" alt="dc power cable" width="100">
+</div>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../hardware/_images/ethernet_cable.png" alt="ethernet cable" width="100">
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="2"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>配件袋</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">M4 × 8内六角圆柱头螺钉，8颗</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">M5 × 8内六角圆柱头螺钉，8颗</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../hardware/_images/screw-m4-8.png" alt="screw m4 8" width="25">
+</div>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../hardware/_images/screw-m5-8.png" alt="screw m5 8" width="30">
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">M8 × 20内六角圆柱头螺栓，2颗</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">M8 × 20 T型螺栓，2颗</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../hardware/_images/bolt-m8-20.png" alt="bolt m8 20" width="40">
+</div>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../hardware/_images/bolt-t.png" alt="bolt t" width="65">
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">M8螺母，2颗</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">M8法兰螺母，2颗</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../hardware/_images/nut-m8.png" alt="nut m8" width="45">
+</div>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../hardware/_images/nut-flange.png" alt="nut flange" width="60">
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">M8垫片，2片</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Ø6 × 10定位销，4颗</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../hardware/_images/washer.png" alt="washer" width="30">
+</div>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../hardware/_images/dowel-pin.png" alt="dowel pin" width="15">
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">线缆固定架，1个</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">扎带，50条</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../hardware/_images/cable-tie-mount.png" alt="cable tie mount" width="130">
+</div>
+</div></div></td>
+<td class="tableblock halign-center valign-middle"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../hardware/_images/zip-tie.png" alt="zip tie" width="10">
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">标定板（仅UHP-140）</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle" colspan="2"><div class="content"><div class="imageblock">
+<div class="content">
+<img src="../hardware/_images/calibration_board.png" alt="calibration board" width="100">
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>可选配件：</p>
+<table class="tableblock frame-none grid-none stripes-none fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">导轨电源</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">标定板（除UHP-140外）</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image"><img src="../hardware/_images/din_rail_power_supply.png" alt="din rail power supply" width="80"></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image"><img src="../hardware/_images/calibration_board.png" alt="calibration board" width="100"></span></p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-started-camera-diagram"><a class="anchor" href="#getting-started-camera-diagram"></a>2. 确认接口及指示灯</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>请对照以下图片及表格，确认相机上各接口及指示灯的功能。</p>
+</div>
+<div class="sect2">
+<h3 id="diagram-1"><a class="anchor" href="#diagram-1"></a>2.1. DEEP、LSR S、LSR L、LSR XL、PRO S、PRO M和UHP-140</h3>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/diagram-general.png" alt="diagram general" width="600">
+</div>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 30%;">
+<col style="width: 30%;">
+<col style="width: 30%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">序号</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">名称</p></th>
+<th class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">功能</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" rowspan="2"><p class="tableblock">①</p></td>
+<td class="tableblock halign-left valign-middle" rowspan="2"><p class="tableblock">DC 24V电源接口</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">1: GND</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">3: 24V DC</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">2: GND</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">4: 24V DC</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" rowspan="4"><p class="tableblock">②</p></td>
+<td class="tableblock halign-left valign-middle" rowspan="4"><p class="tableblock">ETH网口</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">1: MD3_P</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">5: MD1_P</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">2: MD2_N</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">6: MD0_N</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">3: MD2_P</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">7: MD3_N</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">4: MD0_P</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">8: MD1_N</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" rowspan="4"><p class="tableblock">③</p></td>
+<td class="tableblock halign-left valign-middle" rowspan="4"><p class="tableblock">PWR指示灯</p></td>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">熄灭：电源未连接</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">绿灯常亮：电压正常</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">黄色常亮：电压低于16V或高于28V</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">红色常亮：电压低于12V</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" rowspan="2"><p class="tableblock">④</p></td>
+<td class="tableblock halign-left valign-middle" rowspan="2"><p class="tableblock">LINK指示灯</p></td>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">熄灭：网络未连接</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">绿色常亮或闪烁：网络已连接</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" rowspan="5"><p class="tableblock">⑤</p></td>
+<td class="tableblock halign-left valign-middle" rowspan="5"><p class="tableblock">SYS指示灯</p></td>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">熄灭：未启动</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">绿色常亮：正在启动</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">绿色闪烁：正常运行</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">黄色闪烁：电压不稳定或温度异常</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">红色闪烁：严重异常</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" rowspan="2"><p class="tableblock">⑥</p></td>
+<td class="tableblock halign-left valign-middle" rowspan="2"><p class="tableblock">SCAN指示灯</p></td>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">绿色常亮：正在采集和处理数据</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">熄灭：未在采集和处理数据</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="diagram-2"><a class="anchor" href="#diagram-2"></a>2.2. NANO、NANO ULTRA和Welding</h3>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/diagram-special.png" alt="diagram special" width="500">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>上图以NANO为例。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 30%;">
+<col style="width: 30%;">
+<col style="width: 30%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">序号</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">名称</p></th>
+<th class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">功能</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" rowspan="2"><p class="tableblock">①</p></td>
+<td class="tableblock halign-left valign-middle" rowspan="2"><p class="tableblock">PWR指示灯</p></td>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">熄灭：电源未连接</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">绿灯常亮：电压正常</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" rowspan="2"><p class="tableblock">②</p></td>
+<td class="tableblock halign-left valign-middle" rowspan="2"><p class="tableblock">LINK指示灯</p></td>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">熄灭：网络未连接</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" colspan="2"><p class="tableblock">绿色常亮或闪烁：网络已连接</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" rowspan="4"><p class="tableblock">③</p></td>
+<td class="tableblock halign-left valign-middle" rowspan="4"><p class="tableblock">ETH网口</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">1: MD3_P</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">5: MD1_P</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">2: MD2_N</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">6: MD0_N</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">3: MD2_P</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">7: MD3_N</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">4: MD0_P</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">8: MD1_N</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle" rowspan="2"><p class="tableblock">④</p></td>
+<td class="tableblock halign-left valign-middle" rowspan="2"><p class="tableblock">DC 24V电源接口</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">1: GND</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">3: 24V DC</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">2: GND</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">4: 24V DC</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-started-camera-mounting"><a class="anchor" href="#getting-started-camera-mounting"></a>3. 安装相机</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>相机可通过以下方式安装：</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-middle">安装方式</th>
+<th class="tableblock halign-left valign-middle">要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>安装至机器人末端法兰上，随机器人移动。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/mount-to-flange.png" alt="mount to flange" width="250">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>相机与机器人末端法兰需保持相对静止。</p>
+</li>
+<li>
+<p>固定相机线缆时，需预留出一定长度，使线缆可随机器人移动而不因拉扯损坏。</p>
+</li>
+<li>
+<p>数据采集过程中，机器人需停止运动，使相机保持静止。同时，机器人工具不可遮挡相机视野。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>安装至固定支架上，不随机器人移动。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/mount-to-stand.png" alt="mount to stand" width="250">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>支架需保持稳定，无晃动。</p>
+</li>
+<li>
+<p>相机与支架需保持相对静止。</p>
+</li>
+<li>
+<p>数据采集过程中，周围设备不可遮挡相机视野。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="paragraph">
+<p>安装至滑轨上，随滑轨运动。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/mount-to-slide.png" alt="mount to slide" width="250">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>相机与滑轨上用于安装相机的表面需保持相对静止。</p>
+</li>
+<li>
+<p>滑轨启动、停止及移动过程中产生的振动和冲击需在相机的振动和冲击耐性范围内。</p>
+</li>
+<li>
+<p>数据采集过程中，滑轨需停止运动，使相机保持静止。同时，周围设备不可遮挡相机视野。</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>请根据<a href="../hardware/specifications.html" class="xref page">技术参数</a>中的工作温度、工作湿度、振动耐性和冲击耐性确认使用环境是否符合要求。</p>
+</li>
+<li>
+<p>为保证相机采集的数据质量良好，在满足视野和机器人运动空间等要求的前提下，应使相机到目标物体表面的距离在推荐工作距离的范围内。请查看<a href="../hardware/specifications.html" class="xref page">技术参数</a>确认推荐工作距离。</p>
+</li>
+<li>
+<p>请通过合理规划机器人路径等措施避免相机与其他设备碰撞。</p>
+</li>
+<li>
+<p>连接相机和机器人/滑轨的转接件或固定支架需自行准备。请查看<a href="../hardware/specifications.html" class="xref page">技术参数</a>确认相机安装孔和定位孔的尺寸和位置，以及对安装面的平面度要求。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>确定安装方式后，请根据以下小节，通过相机转接件或螺纹孔将相机固定至安装面上。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>请自行准备尺寸合适的内六角扳手和开口扳手。</p>
+</li>
+<li>
+<p>如安装面过厚，请自行准备长度合适的螺栓或螺钉。</p>
+</li>
+<li>
+<p>安装面开有定位孔时，可使用定位销辅助定位相机。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="mount-with-camera-braket"><a class="anchor" href="#mount-with-camera-braket"></a>3.1. 使用相机转接件安装</h3>
+<div class="paragraph">
+<p>使用相机转接件可将相机安装至以下两种安装面上：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>欧标T槽铝型材</p>
+</li>
+<li>
+<p>有安装孔的安装面</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>发货时，相机转接件已安装至相机背部。</p>
+</li>
+<li>
+<p>可将线缆固定架安装至相机转接件上。详见<a href="#mount-cable-tie-mount">安装线缆固定架</a>。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="mount-to-t-slot"><a class="anchor" href="#mount-to-t-slot"></a>3.1.1. 安装至欧标T槽铝型材</h4>
+<div class="paragraph">
+<p>如下图所示，放置2片M8垫片和2颗M8 × 20 T型螺栓，然后使用开口扳手拧紧2颗法兰螺母。推荐扭矩为12~13N·m。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>DEEP、LSR S、LSR L、LSR XL、PRO S、PRO M和UHP-140：</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/mount-with-bracket-1.png" alt="mount with bracket 1" width="500">
+</div>
+</div>
+</li>
+<li>
+<p>NANO：</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/mount-with-bracket-2.png" alt="mount with bracket 2" width="400">
+</div>
+</div>
+</li>
+<li>
+<p>NANO ULTRA和Welding：</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/mount-with-bracket-3.png" alt="mount with bracket 3" width="400">
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mount-through-holes"><a class="anchor" href="#mount-through-holes"></a>3.1.2. 安装至有安装孔的安装面</h4>
+<div class="paragraph">
+<p>如下图所示，放置2片M8垫片和2颗M8 × 20内六角圆柱头螺栓，然后使用开口扳手拧紧2颗螺母。推荐扭矩为12~13N·m。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>DEEP、LSR S、LSR L、LSR XL、PRO S、PRO M和UHP-140：</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/mount-with-bracket-4.png" alt="mount with bracket 4" width="500">
+</div>
+</div>
+</li>
+<li>
+<p>NANO：</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/mount-with-bracket-5.png" alt="mount with bracket 5" width="400">
+</div>
+</div>
+</li>
+<li>
+<p>NANO ULTRA和Welding：</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/mount-with-bracket-6.png" alt="mount with bracket 6" width="400">
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mount-cable-tie-mount"><a class="anchor" href="#mount-cable-tie-mount"></a>3.1.3. 安装线缆固定架</h4>
+<div class="paragraph">
+<p>安装线缆固定架后，可使用绑带将线缆妥善固定，避免拉扯损坏线缆或插头。</p>
+</div>
+<div class="paragraph">
+<p>如下图所示，使用内六角扳手拧紧2颗M5 × 8内六角圆柱头螺钉。推荐扭矩为2.2~2.5N·m。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>DEEP、LSR S、LSR L、LSR XL、PRO S、PRO M和UHP-140：可使用不同位置的螺纹孔（箭头所指）安装线缆固定架。</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/mount-cable-tie-mount-1.png" alt="mount cable tie mount 1" width="400">
+</div>
+</div>
+</li>
+<li>
+<p>NANO：</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/mount-cable-tie-mount-2.png" alt="mount cable tie mount 2" width="300">
+</div>
+</div>
+</li>
+<li>
+<p>NANO ULTRA和Welding：</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/mount-cable-tie-mount-3.png" alt="mount cable tie mount 3" width="300">
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mount-with-threaded-holes-1"><a class="anchor" href="#mount-with-threaded-holes-1"></a>3.2. 使用相机背面螺纹孔安装</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>LSR S、NANO ULTRA和Welding使用此安装方式时，需将相机背面贴紧金属散热面安装，防止相机散热不良，影响正常工作。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>使用内六角扳手拆卸相机转接件。
+LSR S、NANO ULTRA和Welding还需拆卸散热板。</p>
+</li>
+<li>
+<p>如下图所示，将对应规格的内六角圆柱头螺钉放入安装孔内，使用内六角扳手按顺序先预紧，再拧紧螺钉。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>NANO ULTRA和Welding：M4 × 8内六角圆柱头螺钉（推荐扭矩：1.4~1.6N·m）</p>
+</li>
+<li>
+<p>其他型号：M5 × 8内六角圆柱头螺钉（推荐扭矩：2.2~2.5N·m）</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>不同型号所需的螺钉数量不同。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>DEEP、LSR S、LSR L、LSR XL、PRO S、PRO M和UHP-140：</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/mount-with-threaded-holes-1.png" alt="mount with threaded holes 1" width="400">
+</div>
+</div>
+</li>
+<li>
+<p>NANO：</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/mount-with-threaded-holes-2.png" alt="mount with threaded holes 2" width="350">
+</div>
+</div>
+</li>
+<li>
+<p>NANO ULTRA和Welding：</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/mount-with-threaded-holes-2-1.png" alt="mount with threaded holes 2 1" width="350">
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mount-with-threaded-holes-2"><a class="anchor" href="#mount-with-threaded-holes-2"></a>3.3. 使用相机顶部螺纹孔安装</h3>
+<div class="paragraph">
+<p>以下型号顶部提供用于安装的螺纹孔：LSR S、LSR XL、NANO ULTRA、UHP-140和Welding。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>使用内六角扳手拆卸相机转接件。</p>
+</li>
+<li>
+<p>如下图所示，将对应规格的内六角圆柱头螺钉放入安装孔内，使用内六角扳手按顺序先预紧，再拧紧螺钉。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>NANO ULTRA和Welding：M4 × 8内六角圆柱头螺钉（推荐扭矩：1.4~1.6N·m）</p>
+</li>
+<li>
+<p>其他型号：M5 × 8内六角圆柱头螺钉（推荐扭矩：2.2~2.5N·m）</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/mount-with-threaded-holes-3.png" alt="mount with threaded holes 3" width="250">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-started-connect-camera-and-ipc"><a class="anchor" href="#getting-started-connect-camera-and-ipc"></a>4. 连接线缆</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>请按照以下步骤，连接相机的网线和电源线。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/connect-the-camera.png" alt="connect the camera" width="550">
+</div>
+</div>
+<div class="sect2">
+<h3 id="cables"><a class="anchor" href="#cables"></a>4.1. 网线和DC电源线</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>网线：将网线的航插头插入相机的ETH网口，RJ45接头插入工控机的网口。</p>
+</li>
+<li>
+<p>DC电源线：将DC电源线的航插头插入相机的DC 24V电源接口。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>连接网线与DC电源线时：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>将航插的凸起对准对应接口的豁口插入。</p>
+</li>
+<li>
+<p>拧紧紧固螺母，推荐扭矩为0.7N·m。拧紧后，约有2mm间隙。</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>推荐直接连接工控机和相机，以保障数据传输的速度和稳定性。如工控机网口数量不足，请使用带宽至少千兆的工业级交换机/路由器连接工控机和相机。</p>
+</li>
+<li>
+<p>请勿使用带宽低于千兆的交换机/路由器或扩展坞。否则，可能导致网络不稳定，数据传输失败。</p>
+</li>
+<li>
+<p>请使用CAT5e或以上级别的屏蔽网线。</p>
+</li>
+<li>
+<p>当相机安装在机械臂或其他移动装置上时，连接相机端的DC电源线与网线需妥善固定，防止拉扯损坏线缆或插头。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="din-rail-power-supply"><a class="anchor" href="#din-rail-power-supply"></a>4.2. 导轨电源</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>请自行准备AC电源线。</p>
+</li>
+<li>
+<p>本节的导轨电源为梅卡曼德提供的导轨电源。如您自行准备导轨电源，请查看对应的说明书进行连接。</p>
+</li>
+<li>
+<p>AC电源插座应采用有保护接地线（PE线）的单相三线电源插座。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../hardware/_images/din-rail-connection.png" alt="din rail connection" width="400">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>使用一字螺丝刀拧松导轨电源端子上的螺钉。</p>
+</li>
+<li>
+<p>连接DC电源线：将2根标签为+V的线缆分别接入导轨电源上的2个+V输出端子，2根标签为-V的线缆分别接入2个-V输出端子，1根标签为PE的线缆接入接地端子（<span class="image"><img src="../hardware/_images/pe.png" alt="pe" width="25"></span>）。</p>
+</li>
+<li>
+<p>连接AC电源线：将火线接入导轨电源上的L输入端子，零线接入N输入端子，地线接入接地端子（<span class="image"><img src="../hardware/_images/pe.png" alt="pe" width="25"></span>）。</p>
+</li>
+<li>
+<p>使用一字螺丝刀拧紧端子上的螺钉。</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>导轨电源输入相机的电压需达到24V。</p>
+</li>
+<li>
+<p>导轨电源须放在配电箱中使用。</p>
+</li>
+<li>
+<p>导轨电源或连接导轨电源的导轨应可靠接地。如多台导轨电源安装在同一导轨时，各导轨电源应保持一定间距。</p>
+</li>
+<li>
+<p>连接时，请最后接通电源。接通电源后，PWR指示灯应绿色常亮。否则，请联系梅卡曼德。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="warm-up"><a class="anchor" href="#warm-up"></a>5. 暖机</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>为保障本产品采集的数据精度达到技术参数中的标称值，开始使用本产品前请先进行连续数据采集来暖机。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>推荐暖机时间：请查看<a href="../hardware/specifications.html" class="xref page">技术参数</a>。</p>
+</li>
+<li>
+<p>推荐数据采集间隔：按照实际使用时的数据采集间隔进行暖机。如实际使用时的数据采集间隔不固定，则推荐按照平均数据采集间隔进行暖机。例如，实际使用时每6~10秒采集一次数据，则暖机时应每8秒采集一次数据。</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="paragraph">
+<p>相机硬件的安装和连接已完成。接下来将介绍如何使用Mech-Eye Viewer连接相机，并控制相机采集图像。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-started-download-sdk"><a class="anchor" href="#getting-started-download-sdk"></a>6. 下载并安装Mech-Eye SDK</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>你可以从<a href="https://downloads.mech-mind.com.cn/?tab=tab-sdk" target="_blank" rel="noopener">梅卡曼德下载中心</a>下载Mech-Eye SDK安装包。</p>
+</div>
+<div class="paragraph">
+<p>解压安装包后，双击安装文件即可安装Mech-Eye SDK。更多详细信息可参考<a href="installation-guide.html" class="xref page">Mech-Eye SDK安装指南</a>。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-started-set-ip"><a class="anchor" href="#getting-started-set-ip"></a>7. 设置IP地址</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>连接相机前，需确保以下两个IP地址唯一，且在同一网段。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>相机IP地址</p>
+</li>
+<li>
+<p>与相机相连的电脑网口的IP地址</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>请按照以下步骤设置相机的IP地址：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>双击打开Mech-Eye Viewer。</p>
+</li>
+<li>
+<p>选择待连接的相机，单击<span class="image"><img src="../viewer/_images/setting.png" alt="setting" width="25"></span>。</p>
+</li>
+<li>
+<p><a href="../viewer/connect-to-camera-and-set-ip.html#set-ip" class="xref page">设置相机的IP地址</a>。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-started-connect-to-camera"><a class="anchor" href="#getting-started-connect-to-camera"></a>8. 连接相机</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>在Mech-Eye Viewer中找到待连接的相机，单击<b class="button">连接</b>。</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../viewer/_images/connected_view.png" alt="connected view">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>软件或固件需要升级时，将显示<b class="button">升级</b>按钮。请先单击该按钮升级，再连接相机。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-started-capture"><a class="anchor" href="#getting-started-capture"></a>9. 采集图像</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>单击上方的 <span class="image"><img src="../viewer/_images/single_cap.png" alt="single cap" height="25"></span> 即可进行一次图像采集。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+单击 <span class="image"><img src="../viewer/_images/continuous_cap.png" alt="continuous cap" height="25"></span>，可以固定时间间隔连续进行图像采集，再次单击停止图像采集。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>单击图像采集按钮下方的数据类型，即可查看从相机获取的2D图、深度图和点云。</p>
+</div>
+<div class="imageblock text-center,width=600">
+<div class="content">
+<img src="../viewer/_images/acquisition.png" alt="acquisition">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+更多关于采集数据和数据类型的信息，详见<a href="../viewer/scan-and-data-types.html" class="xref page">采集与查看数据</a>。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-started-parameters"><a class="anchor" href="#getting-started-parameters"></a>10. 调节参数</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>如获取的2D图、深度图和点云质量不理想，可在软件最右侧的<strong>参数</strong>标签页中调节相关参数，提升数据质量。</p>
+</div>
+<div class="sect2">
+<h3 id="_判断数据质量"><a class="anchor" href="#_判断数据质量"></a>10.1. 判断数据质量</h3>
+<div class="paragraph">
+<p>请根据以下标准，初步判断数据质量。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2D图：2D图应不过亮或过暗，可看清目标物体的表面特征。</p>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">过暗</th>
+<th class="tableblock halign-center valign-middle">合适</th>
+<th class="tableblock halign-center valign-middle">过亮</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image"><img src="../viewer/_images/exposure-time-5.png" alt="exposure time 5" width="300"></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image"><img src="../viewer/_images/exposure-time-90.png" alt="exposure time 90" width="300"></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image"><img src="../viewer/_images/exposure-time-500.png" alt="exposure time 500" width="300"></span></p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>深度图和点云：深度图和点云中，目标物体对应的数据应完整。以下示例中，目标物体为转子。</p>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-middle">目标物体的点云不完整</th>
+<th class="tableblock halign-center valign-middle">目标物体的点云完整</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image"><img src="../viewer/_images/exposure_time_3d_1.png" alt="exposure time 3d 1" width="300"></span></p></td>
+<td class="tableblock halign-center valign-middle"><p class="tableblock"><span class="image"><img src="../viewer/_images/exposure_time_3d_4.png" alt="exposure time 3d 4" width="300"></span></p></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_提升2d图质量"><a class="anchor" href="#_提升2d图质量"></a>10.2. 提升2D图质量</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>将<strong>2D参数</strong>分组中的<strong>曝光模式</strong>参数设置为<strong>固定曝光</strong>，然后调节<strong>曝光时间</strong>参数。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如2D图过暗，请将<strong>曝光时间</strong>调大。</p>
+</li>
+<li>
+<p>如2D图过亮，请将<strong>曝光时间</strong>调小。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+DEEP与LSR系列相机提供两种2D图，分别对应不同的参数。详见<a href="../viewer/parameters-deep-v4.html#image-2d" class="xref page">DEEP系列参数</a>和<a href="../viewer/parameters-lsr-v4.html#image-2d" class="xref page">LSR系列参数</a>。
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>重新采集图像，确认2D图的质量。</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_提升深度图及点云质量"><a class="anchor" href="#_提升深度图及点云质量"></a>10.3. 提升深度图及点云质量</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>调节<strong>3D参数</strong>分组中的<strong>曝光时间</strong>参数。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>如物体颜色较深或不易反光，请将<strong>曝光时间</strong>调大。</p>
+</li>
+<li>
+<p>如物体颜色较浅或反光，请将<strong>曝光时间</strong>调小。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>重新采集图像，确认深度图和点云的质量。</p>
+</li>
+</ol>
+</div>
+<hr>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+更多参数的说明，详见<a href="../viewer/parameter-reference.html" class="xref page">参数参考指南</a>。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-started-use-data"><a class="anchor" href="#getting-started-use-data"></a>11. 使用数据</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>通过Mech-Eye Viewer获取的2D图、深度图和点云，可直接保存至本地，也可使用Mech-Vision或第三方机器视觉软件进行后续的处理和计算。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>保存数据：单击数据采集区的 <span class="image"><img src="../viewer/_images/save.png" alt="save" height="25"></span>，设置保存路径，勾选需要保存的数据类型，再单击<b class="button">保存</b>。</p>
+</li>
+<li>
+<p>在Mech-Vision中使用数据：请参考<a href="https://docs.mech-mind.net/zh/suite-tutorial/2.1.0/index.html" target="_blank" rel="noopener">视觉系统教程</a>，学习搭建包含Mech-Vision在内的整套视觉系统。</p>
+</li>
+<li>
+<p>在第三方机器视觉软件中使用数据：通过<a href="../api/eye-api.html" class="xref page">Mech-Eye API</a>或<a href="../genicam/genicam-introduction.html" class="xref page">GenICam接口</a>，可将相机获取的数据传输至第三方软件。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="index.html">欢迎</a></span>
+  <span class="next"><a href="release-notes.html">Mech-Eye SDK更新说明</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <div class="footer-content container">
+    <p>© <span id="footer-copyright-year">2025</span> Mech-Mind Robotics Technologies Ltd.</p>
+    <a href="https://docs.mech-mind.net/zh/home/latest/disclaimer.html" target="_blank">免责声明</a>
+  </div>
+</footer>
+<div class="index_cnt_foot" id="index_cnt_foot">
+  <div class="index_cnt_foot_w">
+    <div class="index_cnt_foot_left">
+      <h4><span name="_index_cnt_foot_left2">我们重视您的隐私</span></h4>
+      <p><span name="_index_cnt_foot_left22">我们使用 cookie 为您在我们的网站上提供最佳体验。继续使用该网站即表示您同意使用 cookie。如果您拒绝，将使用一个单独的 cookie
+          来确保您在访问本网站时不会被跟踪或记住。</span></p>
+    </div>
+    <div class="index_cnt_foot_right">
+      <li class="index_cnt_foot_right1" style="display:none!important">
+        <span name="_index_cnt_foot_right"><a id="Preference"
+            href="javascript:void(0);">Preference</a></span><!--ea_span_index_cnt_foot_right-->
+      </li>
+      <li id="close_foot">
+        <span name="_index_cnt_foot_right1"><a href="javascript:void(0);">同意</a></span>
+      </li>
+      <li class="index_cnt_foot_right12" id="index_cnt_foot_right12">
+        <span name="_index_cnt_foot_right2"><a href="javascript:void(0);">不同意</a></span>
+      </li>
+    </div>
+  </div>
+</div><script>
+  window.addEventListener('load', function() {
+    // 在这里执行你的代码
+      var b = document.createElement("script");
+      b.src = "https://api.ipify.org?format=jsonp&callback=getIP";
+      b.async = true;
+      document.body.appendChild(b);
+  });
+  function getIP (json) {
+    window.getUserIp = json.ip
+  }
+</script>
+<script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/lunr-languages.js"></script>
+<script src="../../../_/js/search-ui.js" id="search-ui-script"
+        data-site-root-path="../../.."
+        data-snippet-length="100"
+        data-additional-filters="true"
+        data-stylesheet="../../../_/css/search.css"></script>
+<script async src="../../../search-index.js"></script>
+<script async src="../../../_/js/vendor/tabs.js" data-sync-storage-key="preferred-tab"></script>
+<script async src="https://docs.mech-mind.net/download/js/medium-zoom.js"></script>
+<script>
+  function setCookie (name, value, days) {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+  function getCookie (objname) {
+
+    var arrstr = document.cookie.split("; ");
+
+    for (var i = 0; i < arrstr.length; i++) {
+
+      var temp = arrstr[i].split("=");
+
+      if (temp[0] == objname) return unescape(temp[1]);
+
+    }
+
+  }
+  if (getCookie('key')) {
+    document.getElementById('index_cnt_foot').style.visibility = 'hidden'
+  } else {
+    document.getElementById('index_cnt_foot').style.visibility = 'initial'
+  }
+  var acceptBtn = document.getElementById('close_foot')
+  var disacceptBtn = document.getElementById('index_cnt_foot_right12')
+  acceptBtn.onclick = function () {
+    setCookie("key", "1", 7);
+    document.getElementById('index_cnt_foot').style.visibility = 'hidden'
+  }
+  disacceptBtn.onclick = function () {
+    setCookie("key", "1", 7);
+    document.getElementById('index_cnt_foot').style.visibility = 'hidden'
+  }
+</script>  </body>
+</html>
